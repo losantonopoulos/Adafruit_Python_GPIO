@@ -405,6 +405,10 @@ class AdafruitMinnowAdapter(BaseGPIO):
         """
         self.bbio_gpio.wait_for_edge(self.mraa_gpio.Gpio(pin), self._edge_mapping[edge])
 
+def set_platform_gpio_rpi(**keywords):
+        import RPi.GPIO
+        return RPiGPIOAdapter(RPi.GPIO, **keywords)
+
 def get_platform_gpio(**keywords):
     """Attempt to return a GPIO instance for the platform which the code is being
     executed on.  Currently supports only the Raspberry Pi using the RPi.GPIO
