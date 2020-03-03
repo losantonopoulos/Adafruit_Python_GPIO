@@ -20,6 +20,7 @@
 # THE SOFTWARE.
 
 import Adafruit_GPIO.Platform as Platform
+import RPi.GPIO
 
 
 OUT     = 0
@@ -406,7 +407,6 @@ class AdafruitMinnowAdapter(BaseGPIO):
         self.bbio_gpio.wait_for_edge(self.mraa_gpio.Gpio(pin), self._edge_mapping[edge])
 
 def set_platform_gpio_rpi(**keywords):
-        import RPi.GPIO
         return RPiGPIOAdapter(RPi.GPIO, **keywords)
 
 def get_platform_gpio(**keywords):
